@@ -2,6 +2,7 @@ import { type ListboxProps, type ListboxSectionProps } from "@heroui/react";
 import { IconType } from "react-icons";
 
 export enum MenuItemType {
+  // 嵌套菜单项
   Nest = "nest",
 }
 
@@ -29,3 +30,18 @@ export type MenuProps = Omit<ListboxProps<MenuItem>, "children"> & {
   defaultSelectedKey: string;
   onSelect?: (key: string) => void;
 };
+
+// utils/menu.ts
+// export function findParentKey(
+//   items: MenuItem[],
+//   targetKey: React.Key
+// ): string | undefined {
+//   for (const item of items) {
+//     if (item.items?.some((child) => child.key === targetKey)) return item.key;
+//     if (item.items?.length) {
+//       const found = findParentKey(item.items, targetKey);
+//       if (found) return found;
+//     }
+//   }
+//   return undefined;
+// }

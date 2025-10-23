@@ -1,12 +1,10 @@
 import { Chip } from "@heroui/react";
 
 import { MenuItem, MenuItemType } from "../types/Menu";
-import { HiAcademicCap } from "react-icons/hi2";
 import {
   HiAdjustmentsHorizontal,
   HiMiniFire,
   HiChartPie,
-  HiMiniBuildingStorefront,
   HiMiniCalendarDays,
   HiMiniCube,
   HiMiniRectangleStack,
@@ -17,8 +15,8 @@ import {
 
 export const sectionNestedItems: MenuItem[] = [
   {
-    key: "danshboard",
-    href: "#",
+    key: "home",
+    href: "/",
     icon: HiChartPie,
     title: "数据看板",
     endContent: <HiMiniFire className="text-red-500" />,
@@ -40,12 +38,13 @@ export const sectionNestedItems: MenuItem[] = [
     items: [
       {
         key: "tasks_1",
-        href: "#",
+        href: "/reservation/details-list",
+        // href: "#",
         title: "预约明细",
       },
       {
         key: "tasks_2",
-        href: "#",
+        href: "/reservation/dashboard",
         title: "预约看板",
       },
     ],
@@ -75,14 +74,14 @@ export const sectionNestedItems: MenuItem[] = [
     ],
   },
   {
-    key: "tracker",
-    href: "#",
+    key: "customer",
+    href: "/customer/details-list",
     icon: HiMiniUsers,
     title: "客户管理",
   },
   {
-    key: "analytics",
-    href: "#",
+    key: "employee",
+    href: "/employee/details-list",
     icon: HiMiniUser,
     title: "员工管理",
   },

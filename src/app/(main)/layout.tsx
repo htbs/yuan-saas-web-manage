@@ -17,8 +17,10 @@ import { getGreeting } from "@/utils/DateUtil";
 export default function AppLayout({ children }: { children: React.ReactNode }) {
   // 处理问候语，客户端渲染避免水合差异
   const [greetingText, setGreetingText] = React.useState("");
+
   useEffect(() => {
     setGreetingText(getGreeting());
+    console.log("layout 加载");
   }, []);
 
   return (
@@ -72,33 +74,36 @@ export default function AppLayout({ children }: { children: React.ReactNode }) {
       </aside>
 
       {/* 右侧内容区 */}
-      <main className="flex-1 overflow-auto bg-content1">
-        <div className="w-full flex-1 flex-col p-4">
-          <header className="rounded-medium border-small border-divider flex items-center gap-3 p-4">
-            <div className="grow-3">
-              <h2 className="text-medium text-default-700 font-medium">
-                {greetingText} ：{userInfo.name}
-              </h2>
+      {/* <main className="flex-1 overflow-auto bg-content1"> */}
+      <div className="w-full flex-1 flex-col p-4">
+        {/* 右侧上内容 */}
+        <header className="rounded-medium border-small border-divider flex items-center gap-3 p-4">
+          <div className="grow-3">
+            <h2 className="text-medium text-default-700 font-medium">
+              {greetingText} ：{userInfo.name}
+            </h2>
+          </div>
+          {userInfo.messageCount > 0 ? (
+            <div className="size-8 animate-bounce  rounded-full items-center justify-center flex border-1 border-red-300">
+              <IoIosNotificationsOutline className=" text-red-500" size={20} />
             </div>
-            {userInfo.messageCount > 0 ? (
-              <div className="size-8 animate-bounce  rounded-full items-center justify-center flex border-1 border-red-300">
-                <IoIosNotificationsOutline
-                  className=" text-red-500"
-                  size={20}
-                />
-              </div>
-            ) : (
-              <div className="size-8  rounded-full items-center justify-center flex border-1 border-zinc-300">
-                <IoMdNotificationsOutline size={20} />
-              </div>
-            )}
-            <div className="">
-              <Avatar src={userInfo.image} size="sm" />
+          ) : (
+            <div className="size-8  rounded-full items-center justify-center flex border-1 border-zinc-300">
+              <IoMdNotificationsOutline size={20} />
             </div>
-          </header>
-        </div>
-        {children}
-      </main>
+          )}
+          <div className="">
+            <Avatar src={userInfo.image} size="sm" />
+          </div>
+        </header>
+        {/* 这里是右侧下内容区域，也是主内容区 */}
+        <main className="mt-4 h-[90%] w-full overflow-visible">
+          <div className="rounded-medium border-small border-divider flex h-full w-full flex-col gap-4 ">
+            {children}
+          </div>
+        </main>
+      </div>
+      {/* </main> */}
     </div>
   );
 }
