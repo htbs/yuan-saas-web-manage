@@ -297,11 +297,11 @@
 "use client";
 
 import { Accordion, AccordionItem, type Selection } from "@heroui/react";
-import React, { useEffect } from "react";
-import { Listbox, ListboxItem, ListboxSection } from "@heroui/react";
+import React from "react";
+import { Listbox, ListboxItem } from "@heroui/react";
 import { cn } from "@heroui/react";
 import { MenuProps, MenuItem, MenuItemType } from "../types/Menu";
-import { findParentKey, findPathByKey, findKeyByPath } from "../utils/menu";
+import { findParentKey, findPathByKey } from "../utils/menu";
 import { usePathname, useRouter } from "next/navigation";
 
 const Sidebar = React.forwardRef<HTMLElement, MenuProps>(
